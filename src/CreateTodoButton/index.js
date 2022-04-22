@@ -3,7 +3,7 @@ import "./CreateTodoButton.css";
 
 function CreateTodoButton(props) {
     const click = () => {
-        alert("hola");
+        props.setOpenModal(prevState => !prevState);
     }
     return (
         <button 
