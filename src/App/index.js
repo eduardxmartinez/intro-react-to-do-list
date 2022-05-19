@@ -9,8 +9,8 @@ import { Modal } from "../Modal";
 import { TodoForm } from "../TodoForm";
 import { MyLoader } from "../Loader";
 import { TodoHeader } from "../TodoHeader";
-import {TodoError} from "../TodoError";
-import {EmptyTodos} from "../EmptyTodos"
+import { TodoError } from "../TodoError";
+import { EmptyTodos } from "../EmptyTodos"
 
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
     totalTodos,
     completedTodos,
     searchValue,
-    setSearchValue, 
+    setSearchValue,
     addTodo
   } = useTodos();
 
@@ -41,8 +41,26 @@ function App() {
           setSearchValue={setSearchValue}
         />
       </TodoHeader>
-      
-      <TodoList>
+
+      <TodoList
+        error={error}
+        loading={loading}
+        searchedTodos={searchedTodos}
+        onEror={() => <TodoError />}
+        onLoading={() => <MyLoader />}
+        onEmpty={() => <EmptyTodos />}
+        render={todo => (
+          < TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        )}
+      />
+
+      {/* <TodoList>
         {loading && <MyLoader />}
         {error && <TodoError/>}
         {(!loading && !searchedTodos.length) && <EmptyTodos/>}
@@ -56,13 +74,13 @@ function App() {
             onDelete={() => deleteTodo(todo.text)}
           />
         ))}
-      </TodoList>
+      </TodoList> */}
 
       {openModal && (
         <Modal>
-          <TodoForm 
-          addTodo={addTodo}
-          setOpenModal={setOpenModal}
+          <TodoForm
+            addTodo={addTodo}
+            setOpenModal={setOpenModal}
           />
         </Modal>
       )}
