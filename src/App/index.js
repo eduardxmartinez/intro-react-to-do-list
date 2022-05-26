@@ -12,7 +12,7 @@ import { TodoHeader } from "../TodoHeader";
 import { TodoError } from "../TodoError";
 import { EmptyTodos } from "../EmptyTodos"
 import { EmptySearch } from "../EmptySearch"
-import { ChangeAlertWithStorageListener } from "../ChangeAlert"
+import { ChangeAlert } from "../ChangeAlert"
 
 
 function App() {
@@ -108,7 +108,7 @@ function App() {
       <CreateTodoButton
         setOpenModal={setOpenModal} />
 
-      <ChangeAlertWithStorageListener
+      <ChangeAlert
         sync={syncTodos}
       />
 
