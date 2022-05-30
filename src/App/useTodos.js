@@ -51,21 +51,27 @@ function useTodos() {
         saveTodos(newTodos);
     }
 
-    return {
-            loading,
-            error,
-            totalTodos,
-            completedTodos,
-            searchValue,
-            setSearchValue,
-            searchedTodos,
-            completeTodo,
-            addTodo,
-            deleteTodo,
-            openModal,
-            setOpenModal,
-            syncTodos
-        };
+    const states = {
+        loading,
+        error,
+        totalTodos,
+        completedTodos,
+        searchValue,
+        searchedTodos,
+        openModal
+    };
+
+    const stateSetters = {
+        setSearchValue,
+        addTodo,
+        completeTodo,
+        deleteTodo,
+        setOpenModal,
+        syncTodos
+    }
+
+
+    return {states, stateSetters};
 }
 
 export {useTodos};
